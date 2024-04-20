@@ -1,0 +1,25 @@
+{% extends 'land.html'%}
+
+{% block head %}
+<title>Book Posts</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align:center;font-size: 90px;font-family: 'Staatliches', cursive;margin-top: 20px;">Book Posts <a class="btn btn-dark" href="/Posts/New">+ New Book Post</a></h1>
+    <hr style="height:0.25px;background-color:black">
+    <form class="input-group mb-3" method="GET">
+        <input type="text" name="i" class="form-control" placeholder="Title/Author" aria-describedby="button-addon2" autocomplete='off'>
+        <button class="btn btn-dark" type="submit" id="button-addon2" >Search/Refresh</button>
+    </form>
+    {% for i in post %}
+        <h3 style="font-family: 'Staatliches', cursive"><strong>{{i.title}}</strong></h3>
+        <h5><strong>{{i.author}}</strong></h5>
+        <p style="white-space:pre-wrap;"><strong>{{i.summary}}</strong></p>
+        <p><strong>Posted:</strong> {{i.datetime.strftime("%d")}} {{i.datetime.strftime("%B")}} {{i.datetime.year}}</p>
+        <a style="font-family: 'Staatliches', cursive" class="btn btn-dark" href="/Posts/Delete/{{i.id}}">Delete Post</a>
+        <a style="font-family: 'Staatliches', cursive" class="btn btn-dark" href="/Posts/Edit/{{i.id}}">Edit Post</a>
+        <hr style="height:1px;background-color:black">
+    {% endfor %}
+</div>
+{% endblock %}
