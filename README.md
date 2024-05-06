@@ -1,1 +1,1 @@
-# A Lit Review - Personal Book Blog
+# Personal Book Blog
